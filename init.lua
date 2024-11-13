@@ -870,7 +870,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   require 'default.plugins.debug',
-  require 'default.plugins.indent_line',
+  --require 'default.plugins.indent_line',
   require 'default.plugins.lint',
   require 'default.plugins.autopairs',
   require 'default.plugins.neo-tree',
