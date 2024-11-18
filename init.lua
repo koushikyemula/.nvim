@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -275,7 +276,6 @@ require('lazy').setup({
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-      { 'ThePrimeagen/harpoon' },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -459,6 +459,7 @@ require('lazy').setup({
       -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
       -- and elegantly composed help section, `:help lsp-vs-treesitter`
 
+      vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -518,28 +519,17 @@ require('lazy').setup({
           --    See `:help CursorHold` for information about when this is executed
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
+          -- Disable formatting for all LSP clients to avoid conflicts with prettier
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = highlight_augroup,
               callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd('LspAttach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-              callback = function(event)
-                local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-                -- Disable LSP formatting
-                if client.name == 'lua_ls' or client.name == 'tsserver' then
-                  client.server_capabilities.document_formatting = false
-                  client.server_capabilities.document_range_formatting = false
-                end
-
-                -- Continue with the rest of the LSP setup...
-              end,
             })
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
