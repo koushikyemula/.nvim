@@ -574,6 +574,21 @@ require('lazy').setup({
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+      -- Add format on save
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = '*',
+        callback = function()
+          vim.lsp.buf.format({ 
+            async = false,
+            timeout_ms = 5000,
+            filter = function(client)
+              -- Use null-ls for formatting instead of LSP clients
+              return client.name == "null-ls"
+            end,
+          })
+        end,
+      })
+
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -644,47 +659,39 @@ require('lazy').setup({
     end,
   },
 
-  { -- Autoformat
-    'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_format = 'fallback' }
-        end,
-        mode = '',
-        desc = '[F]ormat buffer',
-      },
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
     },
-    opts = {
-      notify_on_error = false,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
-        local lsp_format_opt
-        if disable_filetypes[vim.bo[bufnr].filetype] then
-          lsp_format_opt = 'never'
-        else
-          lsp_format_opt = 'fallback'
-        end
-        return {
-          timeout_ms = 500,
-          lsp_format = lsp_format_opt,
-        }
-      end,
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
-      },
-    },
+    config = function()
+      local null_ls = require 'null-ls'
+      null_ls.setup {
+        sources = {
+          -- Replace these with the formatters you want to use
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.prettier.with({
+            -- Enable format on save
+            filetypes = {
+              "javascript",
+              "typescript",
+              "css",
+              "scss",
+              "html",
+              "json",
+              "yaml",
+              "markdown",
+              "graphql",
+              "md",
+              "txt",
+            },
+          }),
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.isort,
+          null_ls.builtins.diagnostics.eslint,
+        },
+      }
+    end,
   },
 
   { -- Autocompletion
@@ -909,7 +916,6 @@ require('lazy').setup({
   --
   require 'default.plugins.debug',
   --require 'default.plugins.indent_line',
-  require 'default.plugins.lint',
   require 'default.plugins.autopairs',
   require 'default.plugins.neo-tree',
   require 'default.plugins.gitsigns', -- adds gitsigns recommend keymaps
