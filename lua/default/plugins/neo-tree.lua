@@ -13,6 +13,10 @@ return {
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
+  config = function()
+    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal toggle left<CR>", {})
+    vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal toggle float<CR>", {})
+  end,
   opts = {
     filesystem = {
       window = {
