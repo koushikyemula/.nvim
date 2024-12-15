@@ -5,7 +5,7 @@ return {
     config = function()
       require('kanagawa').setup {
         theme = 'wave', -- Load "wave" theme
-        background = {  -- map the value of 'background' option to a theme
+        background = { -- map the value of 'background' option to a theme
           dark = 'wave',
           light = 'lotus',
         },
