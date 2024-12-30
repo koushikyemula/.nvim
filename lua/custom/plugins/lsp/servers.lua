@@ -36,7 +36,12 @@ return {
     filetypes = { 'vim' },
   },
   -- tsserver = {},
-  ts_ls = {},
+  ts_ls = {
+    flags = os.getenv 'DEBOUNCE_ESLINT' and {
+      allow_incremental_sync = false,
+      debounce_text_changes = 1000,
+    } or nil,
+  },
   gopls = {},
   pyright = {},
 
