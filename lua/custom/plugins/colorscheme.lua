@@ -1,6 +1,7 @@
 return {
   {
     'rebelot/kanagawa.nvim',
+    name = 'kanagawa',
     priority = 1000,
     config = function()
       require('kanagawa').setup {
@@ -36,7 +37,15 @@ return {
         end,
       }
 
-      vim.cmd.colorscheme 'kanagawa'
+      --      vim.cmd.colorscheme 'kanagawa'
+    end,
+  },
+  {
+    'ficcdaf/ashen.nvim',
+    name = 'ashen',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'ashen'
     end,
   },
 }
