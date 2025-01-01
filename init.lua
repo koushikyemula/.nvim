@@ -55,8 +55,6 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
-vim.keymap.set('n', '<leader>Y', [["+Y]])
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
@@ -65,8 +63,6 @@ vim.keymap.set('v', '<space>x', ':lua<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>td', vim.diagnostic.open_float, { desc = 'toggle local troubleshoot' })
-vim.keymap.set('n', '<leader>jd', vim.diagnostic.goto_next, { desc = 'go to next diagnostic' })
-vim.keymap.set('n', '<leader>kd', vim.diagnostic.goto_prev, { desc = 'go to previous diagnostic' })
 vim.keymap.set('n', '<leader>rc', function()
   require('utils').remove_comments()
 end, { desc = '[R]emove [C]omments' })
