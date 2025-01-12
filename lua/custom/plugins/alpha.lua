@@ -41,7 +41,7 @@ return {
       '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⢀⣿⠓⠲⠤⠤⠤⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠤⠤⠤⠤⠤⢴⡆⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
       '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⢸⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
       '',
-      ' ⠀⠀⠀⠀⠀⠀⠀⠀⠀Abandoning your uniqueness is equivalent to dying',
+      ' ⠀⠀⠀⠀⠀⠀⠀⠀⠀Bankai - Neovim btw',
     }
     -- “It might not resonate with all, but those that it does, it'll hit deep.”
     -- dashboard.section.footer.val = 'Abandoning your uniqueness is equivalent to dying'
