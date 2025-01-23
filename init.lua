@@ -46,6 +46,9 @@ vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
 
+-- Keep block cursor in all modes
+vim.opt.guicursor = ''
+
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
