@@ -46,7 +46,6 @@ vim.opt.cursorline = true
 
 vim.opt.scrolloff = 10
 
--- Keep block cursor in all modes
 vim.opt.guicursor = ''
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -197,7 +196,7 @@ require('lazy').setup({
       },
 
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -225,7 +224,7 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       require('telescope').setup {
@@ -343,7 +342,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',
@@ -351,14 +350,6 @@ require('lazy').setup({
       require('mini.ai').setup { n_lines = 500 }
 
       require('mini.surround').setup()
-
-      -- local statusline = require 'mini.statusline'
-
-      -- statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- statusline.section_location = function()
-      --   return '%2l:%-2v'
-      -- end
     end,
   },
   {
