@@ -41,6 +41,14 @@ return {
     end,
   },
   {
+    'nyoom-engineering/oxocarbon.nvim',
+    name = 'oxocarbon',
+    priority = 1000,
+    config = function()
+      --vim.cmd.colorscheme 'oxocarbon'
+    end,
+  },
+  {
     'ficcdaf/ashen.nvim',
     name = 'ashen',
     priority = 1000,
