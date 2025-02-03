@@ -48,6 +48,8 @@ vim.opt.scrolloff = 10
 
 vim.opt.guicursor = ''
 
+vim.diagnostic.config { virtual_lines = true }
+
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
@@ -127,33 +129,6 @@ require('lazy').setup({
 
   'ThePrimeagen/vim-be-good',
 
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    config = function()
-      require('toggleterm').setup {
-        size = 20,
-        open_mapping = [[<C-\>]],
-        hide_numbers = true,
-        shade_terminals = true,
-        shading_factor = 2,
-        start_in_insert = true,
-        insert_mappings = true,
-        persist_size = true,
-        direction = 'float',
-        close_on_exit = true,
-        shell = vim.o.shell,
-        float_opts = {
-          border = 'curved',
-          winblend = 0,
-          highlights = {
-            border = 'Normal',
-            background = 'Normal',
-          },
-        },
-      }
-    end,
-  },
   { 'folke/zen-mode.nvim' },
   {
     'folke/which-key.nvim',
@@ -196,7 +171,7 @@ require('lazy').setup({
       },
 
       spec = {
-        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -224,7 +199,7 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
-      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
       require('telescope').setup {
@@ -342,7 +317,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',

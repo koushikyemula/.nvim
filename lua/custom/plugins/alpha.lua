@@ -41,7 +41,7 @@ return {
       '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⢀⣿⠓⠲⠤⠤⠤⠽⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠤⠤⠤⠤⠤⢴⡆⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
       '⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⢸⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠈⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',
       '',
-      ' ⠀⠀⠀⠀⠀⠀⠀⠀⠀Focus on this moment and make it count',
+      ' ⠀⠀⠀⠀⠀⠀⠀⠀⠀Focus on this moment and make it count, Tatakae!!',
     }
     -- “It might not resonate with all, but those that it does, it'll hit deep.”
     -- dashboard.section.footer.val = 'Abandoning your uniqueness is equivalent to dying'

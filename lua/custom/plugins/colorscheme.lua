@@ -37,7 +37,7 @@ return {
         end,
       }
 
-      --      vim.cmd.colorscheme 'kanagawa'
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
   {
@@ -53,7 +53,7 @@ return {
     name = 'ashen',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'ashen'
+      --vim.cmd.colorscheme 'ashen'
     end,
   },
 }
