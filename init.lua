@@ -173,7 +173,7 @@ require('lazy').setup({
       },
 
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -201,7 +201,7 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       require('telescope').setup {
@@ -221,13 +221,31 @@ require('lazy').setup({
             '--column',
             '--smart-case',
             '--hidden',
-            '--glob=!.git/*',
+            '--no-ignore',
+            '--glob=!**/.git/*',
+            '--glob=!**/node_modules/*',
+            '--glob=!**/.next/*',
+            '--glob=!**/.DS_Store',
           },
         },
         pickers = {
           find_files = {
             hidden = true,
-            file_ignore_patterns = { '^.git/' },
+            no_ignore = true,
+            find_command = {
+              'rg',
+              '--files',
+              '--hidden',
+              '--no-ignore',
+              '--glob',
+              '!**/.git/*',
+              '--glob',
+              '!**/node_modules/*',
+              '--glob',
+              '!**/.next/*',
+              '--glob',
+              '!**/.DS_Store',
+            },
           },
         },
         extensions = {
@@ -345,7 +363,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',
