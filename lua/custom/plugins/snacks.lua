@@ -29,9 +29,9 @@ return {
       desc = 'Zen mode',
     },
     {
-      '<leader>ti', 
+      '<leader>ti',
       function()
-        Snacks.image.hover() 
+        Snacks.image.hover()
       end,
       desc = 'Toggle image preview',
     },
