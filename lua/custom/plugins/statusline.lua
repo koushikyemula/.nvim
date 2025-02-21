@@ -5,13 +5,13 @@ return {
       theme = {
         normal = {
           a = { bg = '#BD93F9', fg = '#282A36' },
-          -- a = { bg = '#662222', fg = '#BBBBBB' }, -- Even darker red-brown
+
           b = { bg = '#2B2B2B', fg = '#F8F8F2' },
           c = { bg = '#303030', fg = '#F8F8F2' },
         },
         insert = {
           a = { bg = '#FFB86C', fg = '#282A36' },
-          -- a = { bg = '#8B4513', fg = '#BBBBBB' }, -- Darker saddle brown orange
+
           b = { bg = '#2B2B2B', fg = '#F8F8F2' },
           c = { bg = '#303030', fg = '#F8F8F2' },
         },
@@ -27,7 +27,7 @@ return {
         },
         command = {
           a = { bg = '#FF79C6', fg = '#282A36' },
-          -- a = { bg = '#0F4214', fg = '#BBBBBB' }, -- Much darker forest green
+
           b = { bg = '#2B2B2B', fg = '#F8F8F2' },
           c = { bg = '#303030', fg = '#F8F8F2' },
         },
@@ -39,6 +39,44 @@ return {
       },
       component_separators = '|',
       section_separators = '',
+    },
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = {
+        'branch',
+        {
+          'diagnostics',
+          sources = { 'nvim_diagnostic' },
+          sections = { 'error', 'warn', 'info', 'hint' },
+          symbols = {
+            error = ' ',
+            warn = ' ',
+            info = ' ',
+            hint = '󰠠 ',
+          },
+          colored = true,
+        },
+      },
+      lualine_c = {
+        {
+          'filename',
+          path = 1,
+          file_status = true,
+        },
+      },
+      lualine_x = {
+        {
+          'diff',
+          symbols = {
+            added = '+',
+            modified = '➜',
+            removed = '-',
+          },
+          colored = true,
+        },
+      },
+      lualine_y = { 'filetype' },
+      lualine_z = { 'location' },
     },
     extensions = {
       'quickfix',

@@ -41,9 +41,9 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
-      { '<leader>do', '<cmd>DiffviewOpen<cr>',          desc = 'View modified files' },
-      { '<leader>dc', '<cmd>DiffviewClose<cr>',         desc = 'Close Diffview' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
+      { '<leader>do', '<cmd>DiffviewOpen<cr>', desc = 'View modified files' },
+      { '<leader>dc', '<cmd>DiffviewClose<cr>', desc = 'Close Diffview' },
     },
     opts = {
       enhanced_diff_hl = true,
