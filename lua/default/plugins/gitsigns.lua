@@ -11,17 +11,17 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        map('n', ']c', function()
+        map('n', '[c', function()
           if vim.wo.diff then
-            vim.cmd.normal { ']c', bang = true }
+            vim.cmd.normal { '[c', bang = true }
           else
             gitsigns.nav_hunk 'next'
           end
         end, { desc = 'Jump to next git [c]hange' })
 
-        map('n', '[c', function()
+        map('n', ']c', function()
           if vim.wo.diff then
-            vim.cmd.normal { '[c', bang = true }
+            vim.cmd.normal { ']c', bang = true }
           else
             gitsigns.nav_hunk 'prev'
           end
@@ -41,9 +41,9 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
-      { '<leader>do', '<cmd>DiffviewOpen<cr>', desc = 'View modified files' },
-      { '<leader>dc', '<cmd>DiffviewClose<cr>', desc = 'Close Diffview' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
+      { '<leader>do', '<cmd>DiffviewOpen<cr>',          desc = 'View modified files' },
+      { '<leader>dc', '<cmd>DiffviewClose<cr>',         desc = 'Close Diffview' },
     },
     opts = {
       enhanced_diff_hl = true,
