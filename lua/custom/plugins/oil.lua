@@ -11,7 +11,7 @@ return {
   },
   dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
   keys = {
-    { '-',          '<CMD>Oil<CR>', desc = 'Open parent directory' },
-    { '<leader>pv', vim.cmd.Ex,     desc = 'Open Netrw' },
+    { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
+    { '<leader>pv', vim.cmd.Ex, desc = 'Open Netrw' },
   },
 }
