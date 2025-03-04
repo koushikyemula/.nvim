@@ -22,13 +22,14 @@ return {
         },
         overrides = function()
           return {
-            LineNr = { bg = '#080808' },
             SignColumn = { bg = '#080808' },
             Normal = { bg = '#080808' },
             NormalFloat = { bg = '#080808' },
             FloatBorder = { bg = '#080808' },
             CursorLine = { bg = '#151515' },
-            CursorLineNr = { bg = '#080808', fg = '#626262', bold = true },
+
+            LineNr = { bg = '#080808', fg = '#515151' },
+            CursorLineNr = { bg = '#080808', fg = '#B0B0B0' },
 
             TreesitterContext = { bg = '#080808' },
             TreesitterContextLineNumber = { bg = '#080808' },
@@ -36,7 +37,6 @@ return {
           }
         end,
       }
-
       vim.cmd.colorscheme 'kanagawa'
     end,
   },
@@ -46,23 +46,35 @@ return {
     priority = 1000,
     config = function()
       vim.opt.background = 'dark'
-      --vim.cmd.colorscheme 'oxocarbon'
+    end,
+  },
+  {
+    'ricardoraposo/nightwolf.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('nightwolf').setup {
+        theme = 'black',
+        italic = true,
+        transparency = false,
+        palette_overrides = {},
+        highlight_overrides = {},
+      }
+      vim.opt.termguicolors = true
+      vim.opt.background = 'dark'
     end,
   },
   {
     'ficcdaf/ashen.nvim',
     name = 'ashen',
     priority = 1000,
-    config = function()
-      --vim.cmd.colorscheme 'ashen'
-    end,
+    config = function() end,
   },
   {
     'wtfox/jellybeans.nvim',
     priority = 1000,
     config = function()
       require('jellybeans').setup()
-      --vim.cmd.colorscheme 'jellybeans'
     end,
   },
 }
