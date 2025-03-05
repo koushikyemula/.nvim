@@ -47,7 +47,7 @@ return {
             { win = 'input', height = 1, border = 'bottom' },
             {
               box = 'horizontal',
-              { win = 'list', border = 'none' },
+              { win = 'list',    border = 'none' },
               { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
             },
           },
@@ -63,9 +63,9 @@ return {
             border = 'rounded',
             title = '{title} {live} {flags}',
             title_pos = 'center',
-            { win = 'input', height = 1, border = 'bottom' },
-            { win = 'list', border = 'none' },
-            { win = 'preview', title = '{preview}', height = 0.4, border = 'top' },
+            { win = 'input',   height = 1,          border = 'bottom' },
+            { win = 'list',    border = 'none' },
+            { win = 'preview', title = '{preview}', height = 0.4,     border = 'top' },
           },
         },
       },
@@ -111,6 +111,27 @@ return {
         require('snacks').rename.rename_file()
       end,
       desc = '[R]ename Current File',
+    },
+    {
+      '<leader>sr',
+      function()
+        Snacks.picker.recent()
+      end,
+      desc = 'Recent',
+    },
+    {
+      '<leader>s/',
+      function()
+        Snacks.picker.search_history()
+      end,
+      desc = 'Search History',
+    },
+    {
+      '<leader>sb',
+      function()
+        Snacks.picker.buffers()
+      end,
+      desc = 'Buffers',
     },
     {
       '<leader>bd',
