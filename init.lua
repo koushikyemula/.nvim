@@ -69,6 +69,8 @@ vim.keymap.set('v', '<space>x', ':lua<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>td', vim.diagnostic.open_float, { desc = 'toggle local troubleshoot' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 vim.keymap.set('n', '<leader>rc', function()
   require('utils').remove_comments()
 end, { desc = '[R]emove [C]omments' })
