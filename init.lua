@@ -70,7 +70,6 @@ vim.keymap.set('n', '<space>x', ':.lua<CR>')
 vim.keymap.set('v', '<space>x', ':lua<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>td', vim.diagnostic.open_float, { desc = 'toggle local troubleshoot' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 vim.keymap.set('n', '<leader>rc', function()
@@ -89,7 +88,7 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<C-w>]v', '<C-w>v<C-]>', { desc = 'Open vertical split and go to definiton' })
+vim.keymap.set('n', '<C-w>]', '<C-w>v<C-]>', { desc = 'Open vertical split and go to definiton' })
 
 vim.filetype.add {
   extension = {
