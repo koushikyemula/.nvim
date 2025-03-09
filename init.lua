@@ -89,6 +89,8 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<C-w>]v', '<C-w>v<C-]>', { desc = 'Open vertical split and go to definiton' })
+
 vim.filetype.add {
   extension = {
     env = 'dotenv',
@@ -187,112 +189,6 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   'nvim-telescope/telescope.nvim',
-  --   event = 'VimEnter',
-  --   branch = '0.1.x',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     {
-  --       'nvim-telescope/telescope-fzf-native.nvim',
-
-  --       build = 'make',
-
-  --       cond = function()
-  --         return vim.fn.executable 'make' == 1
-  --       end,
-  --     },
-  --     { 'nvim-telescope/telescope-ui-select.nvim' },
-
-  --     { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
-  --   },
-  --   config = function()
-  --     require('telescope').setup {
-  --       defaults = {
-  --         mappings = {
-  --           i = {
-  --             ['<C-k>'] = require('telescope.actions').move_selection_previous,
-  --             ['<C-j>'] = require('telescope.actions').move_selection_next,
-  --           },
-  --         },
-  --         vimgrep_arguments = {
-  --           'rg',
-  --           '--color=never',
-  --           '--no-heading',
-  --           '--with-filename',
-  --           '--line-number',
-  --           '--column',
-  --           '--smart-case',
-  --           '--hidden',
-  --           '--no-ignore',
-  --           '--glob=!**/.git/*',
-  --           '--glob=!**/node_modules/*',
-  --           '--glob=!**/.next/*',
-  --           '--glob=!**/.DS_Store',
-  --         },
-  --       },
-  --       pickers = {
-  --         find_files = {
-  --           hidden = true,
-  --           no_ignore = true,
-  --           find_command = {
-  --             'rg',
-  --             '--files',
-  --             '--hidden',
-  --             '--no-ignore',
-  --             '--glob',
-  --             '!**/.git/*',
-  --             '--glob',
-  --             '!**/node_modules/*',
-  --             '--glob',
-  --             '!**/.next/*',
-  --             '--glob',
-  --             '!**/.DS_Store',
-  --           },
-  --         },
-  --       },
-  --       extensions = {
-  --         ['ui-select'] = {
-  --           require('telescope.themes').get_dropdown(),
-  --         },
-  --       },
-  --     }
-
-  --     pcall(require('telescope').load_extension, 'fzf')
-  --     pcall(require('telescope').load_extension, 'ui-select')
-
-  --     local builtin = require 'telescope.builtin'
-  --     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-  --     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-  --     vim.keymap.set('n', '<leader><tab>', builtin.find_files, { desc = '[S]earch [F]iles' })
-  --     vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-  --     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-  --     vim.keymap.set('n', '<leader>lg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-  --     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-  --     vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-  --     vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-  --     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-  --     vim.keymap.set('n', '<leader>sc', builtin.colorscheme, { desc = 'Search Colorscheme' })
-
-  --     vim.keymap.set('n', '<leader>/', function()
-  --       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-  --         winblend = 10,
-  --         previewer = false,
-  --       })
-  --     end, { desc = '[/] Fuzzily search in current buffer' })
-
-  --     vim.keymap.set('n', '<leader>s/', function()
-  --       builtin.live_grep {
-  --         grep_open_files = true,
-  --         prompt_title = 'Live Grep in Open Files',
-  --       }
-  --     end, { desc = '[S]earch [/] in Open Files' })
-
-  --     vim.keymap.set('n', '<leader>sn', function()
-  --       builtin.find_files { cwd = vim.fn.stdpath 'config' }
-  --     end, { desc = '[S]earch [N]eovim files' })
-  --   end,
-  -- },
   {
     'numToStr/Comment.nvim',
     event = 'VeryLazy',
@@ -302,7 +198,6 @@ require('lazy').setup({
     config = function()
       require('Comment').setup {
         pre_hook = function(ctx)
-          -- Check if we're in a JSX/TSX file
           local U = require 'Comment.utils'
           local location = nil
           if ctx.ctype == U.ctype.blockwise then
