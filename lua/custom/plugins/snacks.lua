@@ -47,7 +47,7 @@ return {
             { win = 'input', height = 1, border = 'bottom' },
             {
               box = 'horizontal',
-              { win = 'list', border = 'none' },
+              { win = 'list',    border = 'none' },
               { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
             },
           },
@@ -63,9 +63,9 @@ return {
             border = 'rounded',
             title = '{title} {live} {flags}',
             title_pos = 'center',
-            { win = 'input', height = 1, border = 'bottom' },
-            { win = 'list', border = 'none' },
-            { win = 'preview', title = '{preview}', height = 0.4, border = 'top' },
+            { win = 'input',   height = 1,          border = 'bottom' },
+            { win = 'list',    border = 'none' },
+            { win = 'preview', title = '{preview}', height = 0.4,     border = 'top' },
           },
         },
       },
@@ -92,7 +92,7 @@ return {
   end,
   keys = {
     {
-      '<leader>Z',
+      '<leader>z',
       function()
         Snacks.zen.zen()
       end,
@@ -176,15 +176,14 @@ return {
       end,
       desc = '[S]earch [K]eymaps',
     },
-    -- Git integration
     {
-      '<leader>gb',
+      '<leader>sg',
       function()
         require('snacks').picker.git_branches { layout = 'select' }
       end,
       desc = '[G]it [B]ranches',
     },
-    -- Additional utilities
+
     {
       '<leader>sc',
       function()
@@ -200,14 +199,14 @@ return {
       desc = '[S]earch [H]elp',
     },
     {
-      '<leader>gd',
+      '<leader>sd',
       function()
         Snacks.picker.git_diff()
       end,
       desc = 'Git Diff (Hunks)',
     },
     {
-      '<leader>gl',
+      '<leader>sl',
       function()
         Snacks.picker.git_log_file()
       end,
