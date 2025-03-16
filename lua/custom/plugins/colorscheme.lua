@@ -43,6 +43,9 @@ return {
           }
         end,
       }
+      -- add this to ur ghostty config for transparent bg
+      -- //background-opacity = 0.7
+      -- //background-blur-radius = 30
       vim.cmd.colorscheme 'kanagawa'
 
       vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
