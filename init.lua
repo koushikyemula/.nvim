@@ -75,9 +75,7 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>rc', function()
   require('utils').remove_comments()
 end, { desc = '[R]emove [C]omments' })
---[[ vim.keymap.set({ 'n', 'i', 'v' }, '<C-,>', function()
-  require('utils').code_actions()
-end) ]]
+
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -179,7 +177,7 @@ require('lazy').setup({
       },
 
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -252,6 +250,7 @@ require('lazy').setup({
       {
 
         'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         opts = {
           file_types = { 'markdown', 'Avante' },
         },
@@ -262,7 +261,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',
