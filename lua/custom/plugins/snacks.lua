@@ -134,7 +134,7 @@ return {
       desc = 'Buffers',
     },
     {
-      '<leader>bd',
+      '<leader>db',
       function()
         require('snacks').bufdelete()
       end,

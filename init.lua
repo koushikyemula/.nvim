@@ -50,7 +50,24 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.opt.guicursor = ''
-vim.diagnostic.config { virtual_lines = true }
+
+vim.diagnostic.config {
+  title = false,
+  signs = true,
+  update_in_insert = false,
+  severity_sort = true,
+  virtual_text = false,
+  virtual_lines = {
+    current_line = true,
+  },
+  float = {
+    source = 'if_many',
+    style = 'minimal',
+    border = 'rounded',
+    header = '',
+    prefix = '',
+  },
+}
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')

@@ -4,7 +4,7 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',       opts = {} },
     { 'b0o/schemastore.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
   },
@@ -60,11 +60,11 @@ return {
 
         local wk = require 'which-key'
         wk.add {
-          { '<leader>ca', vim.lsp.buf.code_action, desc = 'Code Action' },
+          { '<leader>ca', vim.lsp.buf.code_action,       desc = 'Code Action' },
           { '<leader>cA', vim.lsp.buf.range_code_action, desc = 'Range Code Actions' },
-          { '<leader>cs', vim.lsp.buf.signature_help, desc = 'Display Signature Information' },
-          { '<leader>cr', vim.lsp.buf.rename, desc = 'Rename all references' },
-          { '<leader>cf', vim.lsp.buf.format, desc = 'Format' },
+          { '<leader>cs', vim.lsp.buf.signature_help,    desc = 'Display Signature Information' },
+          { '<leader>cr', vim.lsp.buf.rename,            desc = 'Rename all references' },
+          { '<leader>cf', vim.lsp.buf.format,            desc = 'Format' },
           {
             '<leader>ci',
             function()
@@ -85,7 +85,7 @@ return {
           --   },
           -- },
 
-          { '<leader>Wa', vim.lsp.buf.add_workspace_folder, desc = 'Workspace Add Folder' },
+          { '<leader>Wa', vim.lsp.buf.add_workspace_folder,    desc = 'Workspace Add Folder' },
           { '<leader>Wr', vim.lsp.buf.remove_workspace_folder, desc = 'Workspace Remove Folder' },
           {
             '<leader>Wl',
@@ -125,22 +125,6 @@ return {
       filetypes = { 'gleam' },
       root_dir = require('lspconfig').util.root_pattern('gleam.toml', '.git'),
       capabilities = capabilities,
-    }
-
-    vim.diagnostic.config {
-      title = false,
-      underline = false,
-      virtual_text = true,
-      signs = true,
-      update_in_insert = false,
-      severity_sort = true,
-      float = {
-        source = 'if_many',
-        style = 'minimal',
-        border = 'rounded',
-        header = '',
-        prefix = '',
-      },
     }
 
     local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
