@@ -118,6 +118,21 @@ return {
       end,
     }
 
+    -- Biome LSP configuration
+    require('lspconfig').biome.setup({
+      settings = {
+        biome = {
+          lint = {
+            rules = {
+              nursery = {
+                useSortedClasses = "off"
+              }
+            }
+          }
+        }
+      }
+    })
+
     -- Gleam LSP
     -- For some reason mason doesn't work with gleam lsp
     require('lspconfig').gleam.setup {
