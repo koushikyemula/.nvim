@@ -78,6 +78,19 @@ vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
+vim.keymap.set('n', '<Leader>rw', function()
+  local word = vim.fn.expand '<cword>'
+  local escaped_word = vim.fn.escape(word, '/\\')
+  vim.api.nvim_feedkeys(':%s/\\C' .. escaped_word .. '/', 'n', false)
+end, { desc = 'Replace word under cursor (case-sensitive)' })
+
+vim.keymap.set('n', '<Leader>rC', function()
+  local word = vim.fn.expand '<cword>'
+  local escaped_word = vim.fn.escape(word, '/\\')
+  vim.api.nvim_feedkeys(':%s/\\c\\(' .. escaped_word .. "\\)/\\=substitute(submatch(0), '" .. escaped_word .. "', '", 'n',
+    false)
+end, { desc = 'Replace word under cursor (case-preserving)' })
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<space><space>x', '<cmd>source %<CR>')
@@ -192,7 +205,7 @@ require('lazy').setup({
       },
 
       spec = {
-        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
@@ -284,7 +297,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',

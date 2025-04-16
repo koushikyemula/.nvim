@@ -63,7 +63,7 @@ return {
           { '<leader>ca', vim.lsp.buf.code_action,       desc = 'Code Action' },
           { '<leader>cA', vim.lsp.buf.range_code_action, desc = 'Range Code Actions' },
           { '<leader>cs', vim.lsp.buf.signature_help,    desc = 'Display Signature Information' },
-          { '<leader>cr', vim.lsp.buf.rename,            desc = 'Rename all references' },
+          { '<leader>ra', vim.lsp.buf.rename,            desc = 'Rename all references' },
           { '<leader>cf', vim.lsp.buf.format,            desc = 'Format' },
           {
             '<leader>ci',
@@ -119,19 +119,19 @@ return {
     }
 
     -- Biome LSP configuration
-    require('lspconfig').biome.setup({
+    require('lspconfig').biome.setup {
       settings = {
         biome = {
           lint = {
             rules = {
               nursery = {
-                useSortedClasses = "off"
-              }
-            }
-          }
-        }
-      }
-    })
+                useSortedClasses = 'off',
+              },
+            },
+          },
+        },
+      },
+    }
 
     -- Gleam LSP
     -- For some reason mason doesn't work with gleam lsp
