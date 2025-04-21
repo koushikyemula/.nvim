@@ -37,7 +37,7 @@ return {
           }
         end,
       }
-      --[[       vim.cmd.colorscheme 'kanagawa' ]]
+      vim.cmd.colorscheme 'kanagawa'
     end,
   },
   {
@@ -163,7 +163,6 @@ return {
           treesitter = true,
           treesitter_context = true,
           vimwiki = true,
-          which_key = true,
         },
         highlight_overrides = {
           all = function(colors)
@@ -209,7 +208,6 @@ return {
               TelescopeResultsTitle = { fg = colors.mantle, bg = colors.mantle },
               TelescopeSelection = { bg = colors.surface0 },
               VertSplit = { bg = colors.base, fg = colors.surface0 },
-              WhichKeyFloat = { bg = colors.mantle },
               YankHighlight = { bg = colors.surface2 },
               FidgetTask = { fg = colors.subtext2 },
               FidgetTitle = { fg = colors.peach },
@@ -448,7 +446,7 @@ return {
         },
       }
 
-      vim.api.nvim_command 'colorscheme catppuccin'
+      --vim.api.nvim_command 'colorscheme catppuccin'
     end,
   },
 }

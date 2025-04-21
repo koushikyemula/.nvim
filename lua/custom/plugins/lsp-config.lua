@@ -21,6 +21,7 @@ return {
     }
     require('mason-lspconfig').setup {
       ensure_installed = vim.tbl_keys(require 'custom.plugins.lsp.servers'),
+      automatic_installation = true,
     }
     require('lspconfig.ui.windows').default_options.border = 'single'
 
@@ -58,43 +59,19 @@ return {
 
         map('<leader>v', '<cmd>vsplit | lua vim.lsp.buf.definition()<cr>', 'Goto Definition in Vertical Split')
 
-        local wk = require 'which-key'
-        wk.add {
-          { '<leader>ca', vim.lsp.buf.code_action,       desc = 'Code Action' },
-          { '<leader>cA', vim.lsp.buf.range_code_action, desc = 'Range Code Actions' },
-          { '<leader>cs', vim.lsp.buf.signature_help,    desc = 'Display Signature Information' },
-          { '<leader>ra', vim.lsp.buf.rename,            desc = 'Rename all references' },
-          { '<leader>cf', vim.lsp.buf.format,            desc = 'Format' },
-          {
-            '<leader>ci',
-            function()
-              require('snacks').picker.lsp_implementations()
-            end,
-            desc = 'Implementation',
-          },
-
-          -- W = {
-          --   name = "+Workspace",
-          --   a = { vim.lsp.buf.add_workspace_folder, "Add Folder" },
-          --   r = { vim.lsp.buf.remove_workspace_folder, "Remove Folder" },
-          --   l = {
-          --     function()
-          --       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          --     end,
-          --     "List Folders",
-          --   },
-          -- },
-
-          { '<leader>Wa', vim.lsp.buf.add_workspace_folder,    desc = 'Workspace Add Folder' },
-          { '<leader>Wr', vim.lsp.buf.remove_workspace_folder, desc = 'Workspace Remove Folder' },
-          {
-            '<leader>Wl',
-            function()
-              print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end,
-            desc = 'Workspace List Folders',
-          },
-        }
+        map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+        map('<leader>cs', vim.lsp.buf.signature_help, 'Display Signature Information')
+        map('<leader>ra', vim.lsp.buf.rename, 'Rename all references')
+        map('<leader>cf', vim.lsp.buf.format, 'Format')
+        map('<leader>ci', function()
+          require('snacks').picker.lsp_implementations()
+        end, 'Implementation')
+        
+        map('<leader>Wa', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
+        map('<leader>Wr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
+        map('<leader>Wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, 'Workspace List Folders')
 
         -- Document highlight removed
       end,

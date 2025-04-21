@@ -42,6 +42,26 @@ return {
       debounce_text_changes = 1000,
     } or nil,
   },
+  eslint = {
+    settings = {
+      -- Improve handling of Next.js projects
+      workingDirectory = { mode = 'auto' },
+      -- Longer timeout to avoid timeouts with larger projects
+      codeAction = {
+        disableRuleComment = {
+          enable = true,
+          location = "separateLine"
+        },
+        showDocumentation = {
+          enable = true
+        }
+      },
+      -- Handle missing plugins gracefully
+      experimental = {
+        useFlatConfig = false
+      }
+    },
+  },
   gopls = {},
   pyright = {},
 
