@@ -87,8 +87,7 @@ end, { desc = 'Replace word under cursor (case-sensitive)' })
 vim.keymap.set('n', '<Leader>rC', function()
   local word = vim.fn.expand '<cword>'
   local escaped_word = vim.fn.escape(word, '/\\')
-  vim.api.nvim_feedkeys(':%s/\\c\\(' .. escaped_word .. "\\)/\\=substitute(submatch(0), '" .. escaped_word .. "', '", 'n',
-    false)
+  vim.api.nvim_feedkeys(':%s/\\c\\(' .. escaped_word .. "\\)/\\=substitute(submatch(0), '" .. escaped_word .. "', '", 'n', false)
 end, { desc = 'Replace word under cursor (case-preserving)' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -246,7 +245,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',
