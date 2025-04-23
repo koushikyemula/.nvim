@@ -158,11 +158,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 require('lazy').setup({
-
   'tpope/vim-sleuth',
-
   'ThePrimeagen/vim-be-good',
-
+  'vuciv/golf',
   {
     'karb94/neoscroll.nvim',
     config = function()

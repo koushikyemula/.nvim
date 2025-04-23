@@ -42,8 +42,13 @@ return {
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
       { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
-      { '<leader>do', '<cmd>DiffviewOpen<cr>',          desc = 'View modified files' },
-      { '<leader>dc', '<cmd>DiffviewClose<cr>',         desc = 'Close Diffview' },
+      { '<leader>dt', function()
+          if next(require('diffview.lib').views) == nil then
+            vim.cmd('DiffviewOpen')
+          else
+            vim.cmd('DiffviewClose')
+          end
+        end, desc = 'Toggle Diffview' },
     },
     opts = {
       enhanced_diff_hl = true,
