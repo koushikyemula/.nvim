@@ -174,21 +174,20 @@ require('lazy').setup({
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = function()
-      local npairs = require('nvim-autopairs')
-      
-      npairs.setup({
-        disable_in_macro = true,  -- disable when recording or executing a macro
+      local npairs = require 'nvim-autopairs'
+      npairs.setup {
+        disable_in_macro = true, -- disable when recording or executing a macro
         disable_in_visualblock = true, -- disable when insert after visual block mode
-        ignored_next_char = "[%w%.%)]", -- don't add pair if next char is alphanumeric
+        ignored_next_char = '[%w%.%)]', -- don't add pair if next char is alphanumeric
         enable_moveright = true,
-        enable_afterquote = false,  -- don't add pair after quote
-        enable_check_bracket_line = true,  -- check bracket in same line
-        map_bs = false,  -- don't map the <BS> key
+        enable_afterquote = false, -- don't add pair after quote
+        enable_check_bracket_line = true, -- check bracket in same line
+        map_bs = false, -- don't map the <BS> key
         map_c_h = false, -- don't map the <C-h> key
         map_c_w = false, -- don't map <C-w> key
-      })
+      }
     end,
-  }
+  },
   {
     'numToStr/Comment.nvim',
     event = 'VeryLazy',

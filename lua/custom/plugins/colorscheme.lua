@@ -78,6 +78,11 @@ return {
     end,
   },
   {
+    'wesleimp/min-theme.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+  {
     'bluz71/vim-moonfly-colors',
     name = 'moonfly',
     lazy = false,
