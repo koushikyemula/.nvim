@@ -15,7 +15,6 @@ return {
     bigfile = { enabled = true },
     statuscolumn = { enabled = true },
     quickfile = { enabled = false },
-    zen = { enabled = true },
     image = {
       enabled = true,
       doc = {
@@ -91,13 +90,6 @@ return {
     _G.Snacks = require 'snacks'
   end,
   keys = {
-    {
-      '<leader>z',
-      function()
-        Snacks.zen.zen()
-      end,
-      desc = 'Zen mode',
-    },
     {
       '<leader>se',
       function()
