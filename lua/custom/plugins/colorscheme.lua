@@ -1,46 +1,4 @@
 return {
-  -- {
-  --   'rebelot/kanagawa.nvim',
-  --   name = 'kanagawa',
-  --   priority = 1000,
-  --   config = function()
-  --     require('kanagawa').setup {
-  --       theme = 'wave',
-  --       background = {
-  --         dark = 'wave',
-  --         light = 'lotus',
-  --       },
-  --       transparent_background = true,
-  --       colors = {
-  --         theme = {
-  --           all = {
-  --             ui = {
-  --               bg = '#080808',
-  --               bg_gutter = '#080808',
-  --             },
-  --           },
-  --         },
-  --       },
-  --       overrides = function()
-  --         return {
-  --           SignColumn = { bg = '#080808' },
-  --           Normal = { bg = '#080808' },
-  --           NormalFloat = { bg = '#080808' },
-  --           FloatBorder = { bg = '#080808' },
-  --           CursorLine = { bg = '#151515' },
-  --
-  --           LineNr = { bg = '#080808', fg = '#515151' },
-  --           CursorLineNr = { bg = '#080808', fg = '#B0B0B0' },
-  --
-  --           TreesitterContext = { bg = '#080808' },
-  --           TreesitterContextLineNumber = { bg = '#080808' },
-  --           TreesitterContextBottom = { bg = '#080808' },
-  --         }
-  --       end,
-  --     }
-  --     vim.cmd.colorscheme 'kanagawa'
-  --   end,
-  -- },
   {
     'rebelot/kanagawa.nvim',
     name = 'kanagawa',
@@ -53,26 +11,58 @@ return {
           light = 'lotus',
         },
         transparent = true, -- Enable transparency
-        colors = {},
-        -- Remove explicit overrides for backgrounds
-      }
+        colors = {
+          theme = {
+            all = {
+              ui = {
+                -- bg = '#080808', -- Commented out for transparency
+                -- bg_gutter = '#080808', -- Commented out for transparency
+              },
+            },
+          },
+        },
+        overrides = function()
+          return {
+            -- SignColumn = { bg = '#080808' },
+            Normal = { bg = 'NONE' }, -- Use NONE for transparency
+            -- NormalFloat = { bg = '#080808' },
+            -- FloatBorder = { bg = '#080808' },
+            CursorLine = { bg = '#151515' },
 
-      -- Apply colorscheme first
+            LineNr = { bg = '#080808', fg = '#515151' },
+            --LineNr = { bg = 'NONE', fg = '#515151' },
+            CursorLineNr = { bg = '#080808', fg = '#B0B0B0' },
+            --CursorLineNr = { bg = 'NONE', fg = '#B0B0B0' },
+
+            -- TreesitterContext = { bg = '#080808' },
+            -- TreesitterContextLineNumber = { bg = '#080808' },
+            -- TreesitterContextBottom = { bg = '#080808' },
+            TreesitterContext = { bg = 'NONE' },
+            TreesitterContextLineNumber = { bg = 'NONE' },
+            TreesitterContextBottom = { bg = 'NONE' },
+            
+            -- Make GitSigns transparent
+            GitSignsAdd = { bg = 'NONE' },
+            GitSignsChange = { bg = 'NONE' },
+            GitSignsDelete = { bg = 'NONE' },
+            SignColumn = { bg = 'NONE' },
+            
+            -- Ensure gutter is also transparent
+            GutterAdd = { bg = 'NONE' },
+            GutterChange = { bg = 'NONE' },
+            GutterDelete = { bg = 'NONE' },
+          }
+        end,
+      }
+      -- add this to ur ghostty config for transparent bg
+      -- //background-opacity = 0.7
+      -- //background-blur-radius = 30
       vim.cmd.colorscheme 'kanagawa'
 
-      -- Then force transparency after colorscheme is loaded
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE', ctermbg = 'NONE', fg = '#515151' })
-      vim.api.nvim_set_hl(0, 'CursorLineNr', { bg = 'NONE', ctermbg = 'NONE', fg = '#B0B0B0' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TreesitterContextLineNumber', { bg = 'NONE', ctermbg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { bg = 'NONE', ctermbg = 'NONE' })
-
-      -- Keep cursor line visible
-      vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#151515', ctermbg = 233 })
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
     end,
   },
   {
