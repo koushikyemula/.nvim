@@ -9,6 +9,18 @@ return {
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
       },
+      signcolumn = true,
+      numhl = false,
+      linehl = false,
+      word_diff = false,
+      watch_gitdir = {
+        interval = 1000,
+        follow_files = true,
+      },
+      attach_to_untracked = true,
+      sign_priority = 6,
+      update_debounce = 100,
+      status_formatter = nil,
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
@@ -48,7 +60,7 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
       {
         '<leader>dt',
         function()

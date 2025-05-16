@@ -10,59 +10,47 @@ return {
           dark = 'wave',
           light = 'lotus',
         },
-        transparent = true, -- enable transparency
+        transparent = true,
         colors = {
           theme = {
             all = {
               ui = {
-                -- bg = '#080808', -- commented out for transparency
-                -- bg_gutter = '#080808', -- commented out for transparency
+                -- bg = '#080808',
+                -- bg_gutter = '#080808',
               },
             },
           },
         },
-        overrides = function()
+        overrides = function(colors)
+          local theme = colors.theme
           return {
-            -- signcolumn = { bg = '#080808' },
-            normal = { bg = 'none' }, -- use none for transparency
-            -- normalfloat = { bg = '#080808' },
-            -- floatborder = { bg = '#080808' },
-            cursorline = { bg = '#151515' },
+            SignColumn = { bg = 'none' },
 
-            linenr = { bg = '#080808', fg = '#515151' },
-            --linenr = { bg = 'none', fg = '#515151' },
-            cursorlinenr = { bg = '#080808', fg = '#b0b0b0' },
-            --cursorlinenr = { bg = 'none', fg = '#b0b0b0' },
+            NormalFloat = { bg = 'none' },
+            FloatBorder = { bg = 'none' },
 
-            -- treesittercontext = { bg = '#080808' },
-            -- treesittercontextlinenumber = { bg = '#080808' },
-            -- treesittercontextbottom = { bg = '#080808' },
-            treesittercontext = { bg = 'none' },
-            treesittercontextlinenumber = { bg = 'none' },
-            treesittercontextbottom = { bg = 'none' },
+            LineNr = { fg = theme.ui.nontext, bg = 'none' },
+            CursorLineNr = { fg = theme.ui.special, bg = 'none' },
 
-            -- make gitsigns transparent
-            gitsignsadd = { bg = 'none' },
-            gitsignschange = { bg = 'none' },
-            gitsignsdelete = { bg = 'none' },
-            signcolumn = { bg = 'none' },
+            GitSignsAdd = { fg = theme.vcs.added, bg = 'none' },
+            GitSignsChange = { fg = theme.vcs.modified, bg = 'none' },
+            GitSignsDelete = { fg = theme.vcs.removed, bg = 'none' },
 
-            -- ensure gutter is also transparent
-            gutteradd = { bg = 'none' },
-            gutterchange = { bg = 'none' },
-            gutterdelete = { bg = 'none' },
+            -- TreesitterContext = { bg = 'NONE' },
+            -- TreesitterContextLineNumber = { bg = 'NONE' },
+            -- TreesitterContextBottom = { bg = 'NONE' },
+            TreesitterContext = { bg = 'NONE' },
+            TreesitterContextLineNumber = { bg = 'NONE' },
+            TreesitterContextBottom = { bg = 'NONE' },
           }
         end,
       }
-      -- add this to ur ghostty config for transparent bg
-      -- //background-opacity = 0.7
-      -- //background-blur-radius = 30
       vim.cmd.colorscheme 'kanagawa'
 
-      vim.api.nvim_set_hl(0, 'normal', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'normalfloat', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'signcolumn', { bg = 'none' })
-      vim.api.nvim_set_hl(0, 'floatborder', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
     end,
   },
   {
