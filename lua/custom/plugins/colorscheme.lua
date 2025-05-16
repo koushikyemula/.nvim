@@ -10,47 +10,47 @@ return {
           dark = 'wave',
           light = 'lotus',
         },
-        transparent = true, -- Enable transparency
+        transparent = true, -- enable transparency
         colors = {
           theme = {
             all = {
               ui = {
-                -- bg = '#080808', -- Commented out for transparency
-                -- bg_gutter = '#080808', -- Commented out for transparency
+                -- bg = '#080808', -- commented out for transparency
+                -- bg_gutter = '#080808', -- commented out for transparency
               },
             },
           },
         },
         overrides = function()
           return {
-            -- SignColumn = { bg = '#080808' },
-            Normal = { bg = 'NONE' }, -- Use NONE for transparency
-            -- NormalFloat = { bg = '#080808' },
-            -- FloatBorder = { bg = '#080808' },
-            CursorLine = { bg = '#151515' },
+            -- signcolumn = { bg = '#080808' },
+            normal = { bg = 'none' }, -- use none for transparency
+            -- normalfloat = { bg = '#080808' },
+            -- floatborder = { bg = '#080808' },
+            cursorline = { bg = '#151515' },
 
-            LineNr = { bg = '#080808', fg = '#515151' },
-            --LineNr = { bg = 'NONE', fg = '#515151' },
-            CursorLineNr = { bg = '#080808', fg = '#B0B0B0' },
-            --CursorLineNr = { bg = 'NONE', fg = '#B0B0B0' },
+            linenr = { bg = '#080808', fg = '#515151' },
+            --linenr = { bg = 'none', fg = '#515151' },
+            cursorlinenr = { bg = '#080808', fg = '#b0b0b0' },
+            --cursorlinenr = { bg = 'none', fg = '#b0b0b0' },
 
-            -- TreesitterContext = { bg = '#080808' },
-            -- TreesitterContextLineNumber = { bg = '#080808' },
-            -- TreesitterContextBottom = { bg = '#080808' },
-            TreesitterContext = { bg = 'NONE' },
-            TreesitterContextLineNumber = { bg = 'NONE' },
-            TreesitterContextBottom = { bg = 'NONE' },
-            
-            -- Make GitSigns transparent
-            GitSignsAdd = { bg = 'NONE' },
-            GitSignsChange = { bg = 'NONE' },
-            GitSignsDelete = { bg = 'NONE' },
-            SignColumn = { bg = 'NONE' },
-            
-            -- Ensure gutter is also transparent
-            GutterAdd = { bg = 'NONE' },
-            GutterChange = { bg = 'NONE' },
-            GutterDelete = { bg = 'NONE' },
+            -- treesittercontext = { bg = '#080808' },
+            -- treesittercontextlinenumber = { bg = '#080808' },
+            -- treesittercontextbottom = { bg = '#080808' },
+            treesittercontext = { bg = 'none' },
+            treesittercontextlinenumber = { bg = 'none' },
+            treesittercontextbottom = { bg = 'none' },
+
+            -- make gitsigns transparent
+            gitsignsadd = { bg = 'none' },
+            gitsignschange = { bg = 'none' },
+            gitsignsdelete = { bg = 'none' },
+            signcolumn = { bg = 'none' },
+
+            -- ensure gutter is also transparent
+            gutteradd = { bg = 'none' },
+            gutterchange = { bg = 'none' },
+            gutterdelete = { bg = 'none' },
           }
         end,
       }
@@ -59,10 +59,10 @@ return {
       -- //background-blur-radius = 30
       vim.cmd.colorscheme 'kanagawa'
 
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'normalfloat', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'signcolumn', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'floatborder', { bg = 'none' })
     end,
   },
   {

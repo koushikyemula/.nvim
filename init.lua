@@ -87,7 +87,8 @@ end, { desc = 'Replace word under cursor (case-sensitive)' })
 vim.keymap.set('n', '<Leader>rC', function()
   local word = vim.fn.expand '<cword>'
   local escaped_word = vim.fn.escape(word, '/\\')
-  vim.api.nvim_feedkeys(':%s/\\c\\(' .. escaped_word .. "\\)/\\=substitute(submatch(0), '" .. escaped_word .. "', '", 'n', false)
+  vim.api.nvim_feedkeys(':%s/\\c\\(' .. escaped_word .. "\\)/\\=substitute(submatch(0), '" .. escaped_word .. "', '", 'n',
+    false)
 end, { desc = 'Replace word under cursor (case-preserving)' })
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -176,15 +177,15 @@ require('lazy').setup({
     config = function()
       local npairs = require 'nvim-autopairs'
       npairs.setup {
-        disable_in_macro = true, -- disable when recording or executing a macro
-        disable_in_visualblock = true, -- disable when insert after visual block mode
-        ignored_next_char = '[%w%.%)]', -- don't add pair if next char is alphanumeric
+        disable_in_macro = true,          -- disable when recording or executing a macro
+        disable_in_visualblock = true,    -- disable when insert after visual block mode
+        ignored_next_char = '[%w%.%)]',   -- don't add pair if next char is alphanumeric
         enable_moveright = true,
-        enable_afterquote = false, -- don't add pair after quote
+        enable_afterquote = false,        -- don't add pair after quote
         enable_check_bracket_line = true, -- check bracket in same line
-        map_bs = false, -- don't map the <BS> key
-        map_c_h = false, -- don't map the <C-h> key
-        map_c_w = false, -- don't map <C-w> key
+        map_bs = false,                   -- don't map the <BS> key
+        map_c_h = false,                  -- don't map the <C-h> key
+        map_c_w = false,                  -- don't map <C-w> key
       }
     end,
   },
@@ -261,7 +262,7 @@ require('lazy').setup({
 
   { 'tzachar/highlight-undo.nvim' },
 
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim',   event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
   {
     'echasnovski/mini.nvim',
@@ -305,7 +306,7 @@ require('lazy').setup({
 
   require 'default.plugins.autopairs',
   require 'default.plugins.neo-tree',
-  require 'default.plugins.gitsigns',
+  require 'default.plugins.git',
 
   { import = 'custom.plugins' },
 }, {
