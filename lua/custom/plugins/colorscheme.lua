@@ -87,7 +87,12 @@ return {
     'wtfox/jellybeans.nvim',
     priority = 1000,
     config = function()
-      require('jellybeans').setup()
+      require('jellybeans').setup({
+        transparent = true,
+        overrides = {},
+        custom_colors = {},
+        custom_highlights = {},
+      })
     end,
   },
   {
@@ -111,6 +116,7 @@ return {
     priority = 1000,
     config = function()
       require('catppuccin').setup {
+        transparent_background = true,
         background = {
           light = 'latte',
           dark = 'mocha',

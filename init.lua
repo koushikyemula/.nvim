@@ -302,16 +302,10 @@ require('lazy').setup({
     },
   },
 
-  require 'default.plugins.debug',
-
-  require 'default.plugins.autopairs',
-  require 'default.plugins.neo-tree',
-  require 'default.plugins.git',
-
+  { import = 'default.plugins' },
   { import = 'custom.plugins' },
 }, {
   ui = {
-
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',

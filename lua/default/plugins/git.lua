@@ -2,13 +2,6 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     opts = {
-      signs = {
-        add = { text = '│' },
-        change = { text = '│' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
       signcolumn = true,
       numhl = false,
       linehl = false,
@@ -20,10 +13,16 @@ return {
       attach_to_untracked = true,
       sign_priority = 6,
       update_debounce = 100,
-      status_formatter = nil,
+      signs = {
+        add = { text = '│' },
+        change = { text = '│' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+        untracked = { text = '┆' },
+      },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
-
         local function map(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr
@@ -60,7 +59,7 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
       {
         '<leader>dt',
         function()

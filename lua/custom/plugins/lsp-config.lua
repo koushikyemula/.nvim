@@ -19,9 +19,20 @@ return {
         },
       },
     }
-    require('mason-lspconfig').setup {
+
+    local mason_lspconfig = require 'mason-lspconfig'
+    mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(require 'custom.plugins.lsp.servers'),
       automatic_installation = true,
+      handlers = {
+        function(server_name)
+          require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            settings = require('custom.plugins.lsp.servers')[server_name],
+            filetypes = (require('custom.plugins.lsp.servers')[server_name] or {}).filetypes,
+          }
+        end,
+      }
     }
     require('lspconfig.ui.windows').default_options.border = 'single'
 
@@ -82,18 +93,17 @@ return {
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    local mason_lspconfig = require 'mason-lspconfig'
-
-    mason_lspconfig.setup_handlers {
-      function(server_name)
-        require('lspconfig')[server_name].setup {
-          capabilities = capabilities,
-          -- on_attach = require("plugins.lsp.on_attach").on_attach,
-          settings = require('custom.plugins.lsp.servers')[server_name],
-          filetypes = (require('custom.plugins.lsp.servers')[server_name] or {}).filetypes,
-        }
-      end,
-    }
+    -- Remove the separate setup_handlers call since it's now part of the setup
+    -- local mason_lspconfig = require 'mason-lspconfig'
+    -- mason_lspconfig.setup_handlers {
+    --   function(server_name)
+    --     require('lspconfig')[server_name].setup {
+    --       capabilities = capabilities,
+    --       settings = require('custom.plugins.lsp.servers')[server_name],
+    --       filetypes = (require('custom.plugins.lsp.servers')[server_name] or {}).filetypes,
+    --     }
+    --   end,
+    -- }
 
     -- Biome LSP configuration
     require('lspconfig').biome.setup {
