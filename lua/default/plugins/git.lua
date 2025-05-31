@@ -33,19 +33,19 @@ return {
           if vim.wo.diff then
             vim.cmd.normal { '[c', bang = true }
           else
-            gs.prev_hunk()
+            gs.next_hunk()
           end
-        end, { desc = 'Jump to previous git [c]hange' })
+        end, { desc = 'Jump to next git [c]hange' })
 
         map('n', ']c', function()
           if vim.wo.diff then
             vim.cmd.normal { ']c', bang = true }
           else
-            gs.next_hunk()
+            gs.prev_hunk()
           end
-        end, { desc = 'Jump to next git [c]hange' })
+        end, { desc = 'Jump to previous git [c]hange' })
 
-        map('n', '<leader>gS', gs.stage_buffer, { desc = 'git [S]tage buffer' })
+        --map('n', '<leader>gS', gs.stage_buffer, { desc = 'git [S]tage buffer' })
         map('n', '<leader>gR', gs.reset_buffer, { desc = 'git [R]eset buffer' })
         map('n', '<leader>gb', gs.blame_line, { desc = 'git [b]lame line' })
         map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
@@ -59,7 +59,7 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
       {
         '<leader>dt',
         function()
