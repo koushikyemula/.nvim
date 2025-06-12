@@ -10,13 +10,13 @@ return {
           dark = 'wave',
           light = 'lotus',
         },
-        transparent = true,
+        --[[         transparent = true, ]]
         colors = {
           theme = {
             all = {
               ui = {
-                -- bg = '#080808',
-                -- bg_gutter = '#080808',
+                bg = '#080808',
+                bg_gutter = '#080808',
               },
             },
           },
@@ -36,9 +36,6 @@ return {
             GitSignsChange = { fg = theme.vcs.modified, bg = 'none' },
             GitSignsDelete = { fg = theme.vcs.removed, bg = 'none' },
 
-            -- TreesitterContext = { bg = 'NONE' },
-            -- TreesitterContextLineNumber = { bg = 'NONE' },
-            -- TreesitterContextBottom = { bg = 'NONE' },
             TreesitterContext = { bg = 'NONE' },
             TreesitterContextLineNumber = { bg = 'NONE' },
             TreesitterContextBottom = { bg = 'NONE' },
@@ -47,10 +44,10 @@ return {
       }
       vim.cmd.colorscheme 'kanagawa'
 
-      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+      --[[ vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' }) ]]
     end,
   },
   {
@@ -87,12 +84,12 @@ return {
     'wtfox/jellybeans.nvim',
     priority = 1000,
     config = function()
-      require('jellybeans').setup({
+      require('jellybeans').setup {
         transparent = true,
         overrides = {},
         custom_colors = {},
         custom_highlights = {},
-      })
+      }
     end,
   },
   {
