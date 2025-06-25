@@ -10,13 +10,13 @@ return {
           dark = 'wave',
           light = 'lotus',
         },
-        --[[         transparent = true, ]]
+        transparent = true,
         colors = {
           theme = {
             all = {
               ui = {
-                bg = '#080808',
-                bg_gutter = '#080808',
+                --[[ bg = '#080808',
+                bg_gutter = '#080808', ]]
               },
             },
           },
@@ -44,10 +44,10 @@ return {
       }
       vim.cmd.colorscheme 'kanagawa'
 
-      --[[ vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
       vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' }) ]]
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
     end,
   },
   {
