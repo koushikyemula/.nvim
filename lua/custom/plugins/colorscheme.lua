@@ -59,6 +59,24 @@ return {
     end,
   },
   {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup {
+        color_overrides = {
+          theme = {
+            all = {
+              ui = {
+                bg = '#0a0a0a',
+              },
+            },
+          },
+        },
+      }
+      --vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
+  {
     'ricardoraposo/nightwolf.nvim',
     lazy = false,
     priority = 1000,
@@ -177,7 +195,6 @@ return {
             bookmark0 = '#594d3e',
           },
         },
-        transparent_background = true,
         show_end_of_buffer = false,
         integration_default = false,
         integrations = {
