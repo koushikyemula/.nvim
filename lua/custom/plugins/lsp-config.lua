@@ -4,9 +4,9 @@ return {
   dependencies = {
     { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim',       opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
     { 'b0o/schemastore.nvim' },
-    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-nvim-lsp', optional = true },
   },
   config = function()
     require('mason').setup {
@@ -20,6 +20,20 @@ return {
       },
     }
 
+    -- Setup capabilities first
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- Use blink.cmp capabilities instead of nvim-cmp
+    local has_blink, blink = pcall(require, 'blink.cmp')
+    if has_blink then
+      capabilities = vim.tbl_deep_extend('force', capabilities, blink.get_lsp_capabilities())
+    else
+      -- Fallback to nvim-cmp if blink is not available
+      local has_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+      if has_cmp then
+        capabilities = vim.tbl_deep_extend('force', capabilities, cmp_nvim_lsp.default_capabilities())
+      end
+    end
+
     local mason_lspconfig = require 'mason-lspconfig'
     mason_lspconfig.setup {
       ensure_installed = vim.tbl_keys(require 'custom.plugins.lsp.servers'),
@@ -32,7 +46,7 @@ return {
             filetypes = (require('custom.plugins.lsp.servers')[server_name] or {}).filetypes,
           }
         end,
-      }
+      },
     }
     require('lspconfig.ui.windows').default_options.border = 'single'
 
@@ -77,7 +91,7 @@ return {
         map('<leader>ci', function()
           require('snacks').picker.lsp_implementations()
         end, 'Implementation')
-        
+
         map('<leader>Wa', vim.lsp.buf.add_workspace_folder, 'Workspace Add Folder')
         map('<leader>Wr', vim.lsp.buf.remove_workspace_folder, 'Workspace Remove Folder')
         map('<leader>Wl', function()
@@ -88,10 +102,7 @@ return {
       end,
     })
 
-    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    -- Capabilities already defined above
 
     -- Remove the separate setup_handlers call since it's now part of the setup
     -- local mason_lspconfig = require 'mason-lspconfig'

@@ -7,11 +7,6 @@ return {
       },
     },
   },
-  terraformls = {
-    cmd = { 'terraform-ls' },
-    arg = { 'server' },
-    filetypes = { 'terraform', 'tf', 'terraform-vars' },
-  },
   lua_ls = {
     settings = {
       Lua = {
@@ -37,6 +32,7 @@ return {
   },
   -- tsserver = {},
   ts_ls = {
+    single_file_support = true, -- Enable support for standalone TypeScript/JavaScript files
     flags = os.getenv 'DEBOUNCE_ESLINT' and {
       allow_incremental_sync = false,
       debounce_text_changes = 1000,
@@ -50,16 +46,16 @@ return {
       codeAction = {
         disableRuleComment = {
           enable = true,
-          location = "separateLine"
+          location = 'separateLine',
         },
         showDocumentation = {
-          enable = true
-        }
+          enable = true,
+        },
       },
       -- Handle missing plugins gracefully
       experimental = {
-        useFlatConfig = false
-      }
+        useFlatConfig = false,
+      },
     },
   },
   gopls = {},

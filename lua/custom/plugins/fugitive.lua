@@ -1,7 +1,7 @@
 return {
   'tpope/vim-fugitive',
   config = function()
-    vim.keymap.set('n', '<leader>go', vim.cmd.Git)
+    vim.keymap.set('n', '<leader>g-', vim.cmd.Git)
 
     local BlitZ_Fugitive = vim.api.nvim_create_augroup('BlitZ_Fugitive', {})
 

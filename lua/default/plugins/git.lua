@@ -22,7 +22,8 @@ return {
         untracked = { text = '┆' },
       },
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        -- Fix: Use require instead of package.loaded to avoid circular dependencies
+        local gs = require 'gitsigns'
         local function map(mode, l, r, opts)
           opts = opts or {}
           opts.buffer = bufnr
@@ -59,7 +60,7 @@ return {
     cmd = { 'DiffviewOpen', 'DiffviewFileHistory', 'DiffviewClose' },
     keys = {
       { '<leader>dv', '<cmd>DiffviewFileHistory %<cr>', desc = 'View git history for current file' },
-      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>',   desc = 'View git history for repo' },
+      { '<leader>dh', '<cmd>DiffviewFileHistory<cr>', desc = 'View git history for repo' },
       {
         '<leader>dt',
         function()
