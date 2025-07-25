@@ -33,30 +33,10 @@ return {
   -- tsserver = {},
   ts_ls = {
     single_file_support = true, -- Enable support for standalone TypeScript/JavaScript files
-    flags = os.getenv 'DEBOUNCE_ESLINT' and {
-      allow_incremental_sync = false,
-      debounce_text_changes = 1000,
-    } or nil,
-  },
-  eslint = {
-    settings = {
-      -- Improve handling of Next.js projects
-      workingDirectory = { mode = 'auto' },
-      -- Longer timeout to avoid timeouts with larger projects
-      codeAction = {
-        disableRuleComment = {
-          enable = true,
-          location = 'separateLine',
-        },
-        showDocumentation = {
-          enable = true,
-        },
-      },
-      -- Handle missing plugins gracefully
-      experimental = {
-        useFlatConfig = false,
-      },
-    },
+    -- flags = os.getenv 'DEBOUNCE_ESLINT' and {
+    --   allow_incremental_sync = false,
+    --   debounce_text_changes = 1000,
+    -- } or nil,
   },
   gopls = {},
   pyright = {},

@@ -16,11 +16,11 @@ return {
       -- Go
       go = { 'golangcilint' },
 
-      -- JavaScript/TypeScript
-      javascript = { 'eslint_d' },
-      typescript = { 'eslint_d' },
-      javascriptreact = { 'eslint_d' },
-      typescriptreact = { 'eslint_d' },
+      -- JavaScript/TypeScript (ESLint disabled to prevent plugin errors)
+      -- javascript = { 'eslint_d' },
+      -- typescript = { 'eslint_d' },
+      -- javascriptreact = { 'eslint_d' },
+      -- typescriptreact = { 'eslint_d' },
 
       -- Lua
 

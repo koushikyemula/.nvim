@@ -33,7 +33,6 @@ return {
           'html', -- HTML LSP
           'cssls', -- CSS LSP
           'tailwindcss', -- Tailwind CSS LSP
-          'eslint', -- ESLint LSP
           'rust_analyzer', -- Rust LSP
           'bashls', -- Bash LSP
           'marksman', -- Markdown LSP
@@ -61,7 +60,6 @@ return {
           'taplo', -- TOML formatter
 
           -- Linters (optional - can be used via LSP or nvim-lint)
-          'eslint_d', -- Fast ESLint daemon
           'markdownlint-cli2', -- Markdown linter
           'shellcheck', -- Shell script linter
           'yamllint', -- YAML linter
