@@ -62,7 +62,7 @@ vim.diagnostic.config {
     focusable = false,
     style = 'minimal',
     border = 'rounded',
-    source = true,
+    source = 'if_many',
     header = '',
   },
 }
@@ -77,6 +77,7 @@ vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
+vim.keymap.set('n', 'x', '"_x')
 
 vim.keymap.set('n', '<Leader>rw', function()
   local word = vim.fn.expand '<cword>'
@@ -136,6 +137,24 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Jump to last position when reopening a file
+vim.api.nvim_create_autocmd('BufReadPost', {
+  desc = 'Open file at the last position it was edited earlier',
+  group = vim.api.nvim_create_augroup('kickstart-position', { clear = true }),
+  command = 'silent! normal! g`"zv',
+})
+
+-- Open help window in a vertical split to the right.
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  group = vim.api.nvim_create_augroup('kickstart-help', { clear = true }),
+  pattern = { '*.txt' },
+  callback = function()
+    if vim.o.filetype == 'help' then
+      vim.cmd.wincmd 'L'
+    end
   end,
 })
 
