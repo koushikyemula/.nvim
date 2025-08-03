@@ -74,6 +74,15 @@ return {
       single_file_support = true,
     })
 
+    vim.lsp.config('tailwindcss', {
+      settings = {
+        tailwindCSS = {
+          filetypes_exclude = { 'markdown' },
+          filetypes_include = {},
+        },
+      },
+    })
+
     vim.lsp.enable(servers)
 
     require('mason-lspconfig').setup {
