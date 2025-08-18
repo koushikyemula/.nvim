@@ -6,6 +6,8 @@ vim.g.have_nerd_font = true
 
 vim.opt.number = true
 vim.opt.nu = true
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = '100'
 vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -34,8 +36,6 @@ vim.opt.smartcase = true
 
 vim.opt.signcolumn = 'yes'
 vim.opt.isfname:append '@-@'
-
-vim.opt.updatetime = 250
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true

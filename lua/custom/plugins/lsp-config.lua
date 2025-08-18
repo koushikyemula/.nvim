@@ -72,6 +72,14 @@ return {
 
     vim.lsp.config('ts_ls', {
       single_file_support = true,
+      settings = {
+        javascript = {
+          suggest = {
+            names = false,
+            autoImports = false,
+          },
+        },
+      },
     })
 
     vim.lsp.config('tailwindcss', {
