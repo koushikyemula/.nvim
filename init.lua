@@ -158,6 +158,22 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   end,
 })
 
+vim.api.nvim_create_augroup('insert-relativenumber', { clear = true })
+vim.api.nvim_create_autocmd('InsertEnter', {
+  group = 'insert-relativenumber',
+  pattern = '*',
+  callback = function()
+    vim.wo.relativenumber = false
+  end,
+})
+vim.api.nvim_create_autocmd('InsertLeave', {
+  group = 'insert-relativenumber',
+  pattern = '*',
+  callback = function()
+    vim.wo.relativenumber = true
+  end,
+})
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
